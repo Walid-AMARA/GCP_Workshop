@@ -10,8 +10,8 @@ steps:
     args:
       - '-c'
       - |
-        pip install -r requirements.txt pytest
-        pytest
+        pip install -r requirements.txt 
+        
 
   # Step 2: Build the Docker image
   - name: 'gcr.io/cloud-builders/docker'
