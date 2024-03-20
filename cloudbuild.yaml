@@ -10,11 +10,11 @@ steps:
 
   # Step 2: Build the Docker image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/my-fastapi-app:$COMMIT_SHA', '.']
+    args: ['build', '-t', 'gcr.io/adept-mountain-416817/my-fastapi-app:$COMMIT_SHA', '.']
 
   # Step 3: Push the image to Google Container Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/$PROJECT_ID/my-fastapi-app:$COMMIT_SHA']
+    args: ['push', 'gcr.io/adept-mountain-416817/my-fastapi-app:$COMMIT_SHA']
 
   # Step 4: Deploy to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -23,14 +23,14 @@ steps:
       - 'run'
       - 'deploy'
       - 'my-fastapi-service'
-      - '--image=gcr.io/$PROJECT_ID/my-fastapi-app:$COMMIT_SHA'
-      - '--region=us-central1'
+      - '--image=gcr.io/adept-mountain-416817/my-fastapi-app:$COMMIT_SHA'
+      - '--region=europe-west4'
       - '--platform=managed'
       - '--allow-unauthenticated'  # Remove if you want to restrict access
 
 # Images to be stored in the Container Registry
 images:
-  - 'gcr.io/$PROJECT_ID/my-fastapi-app:$COMMIT_SHA'
+  - 'gcr.io/adept-mountain-416817/my-fastapi-app:$COMMIT_SHA'
 
 # Set substitutions for variable values
 substitutions:
