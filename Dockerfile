@@ -1,6 +1,21 @@
+# Use an official Python runtime as a parent image
 FROM python:3.8-slim
+
+# Set the working directory in the container
 WORKDIR /app
+
+# Copy the current directory contents into the container at /app
 COPY . /app
+
+# Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
-EXPOSE 80
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
+
+# Make port 8080 available to the world outside this container
+EXPOSE 8080
+
+# Define environment variable for the port (if not already set by Cloud Run)
+ENV PORT 8080
+
+# Run the app. CMD is required to run on Heroku
+# $PORT is set by Heroku
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "$PORT"]
