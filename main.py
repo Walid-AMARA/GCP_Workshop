@@ -11,7 +11,7 @@ async def read_root():
             <title>FastAPI Application</title>
         </head>
         <body>
-            <h1 style='color: red;'>Hello World V2</h1>
+            <h1 style='color: red;'>WorkSHOP GCP CI CD</h1>
         </body>
     </html>
     """
