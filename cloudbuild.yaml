@@ -21,17 +21,18 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/adept-mountain-416817/my-fastapi-app:$COMMIT_SHA']
 
-  # Step 4: Deploy to Cloud Run
+  # Deploy to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
     args:
       - 'run'
       - 'deploy'
       - 'my-fastapi-service'
-      - '--image=gcr.io/adept-mountain-416817/my-fastapi-app:$COMMIT_SHA'
-      - '--region=us-central1'
+      - '--image=gcr.io/$PROJECT_ID/my-fastapi-app:$COMMIT_SHA'
       - '--platform=managed'
-      - '--allow-unauthenticated'  # Remove if you want to restrict access
+      - '--region=us-central1'
+      - '--allow-unauthenticated'
+      - '--set-env-vars=PORT=8080'
 
 # Images to be stored in the Container Registry
 images:
