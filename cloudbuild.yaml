@@ -32,7 +32,7 @@ steps:
       - '--platform=managed'
       - '--region=us-central1'
       - '--allow-unauthenticated'
-      - '--set-env-vars=PORT=8080'
+      # - '--set-env-vars=PORT=8080'
 
 # Images to be stored in the Container Registry
 images:
