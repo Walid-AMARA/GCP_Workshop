@@ -1,7 +1,7 @@
-# options:
-#   logging: CLOUD_LOGGING_ONLY
-#   logStreamingOption: STREAM_ON
-#   logsBucket: 'gs://logging_bucket_cicd'
+options:
+  logging: CLOUD_LOGGING_ONLY
+  logStreamingOption: STREAM_ON
+  logsBucket: 'logging_bucket_cicd' 
 
 steps:
   # Step 1: Install dependencies and run tests
