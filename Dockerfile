@@ -14,8 +14,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 8080
 
 # Define environment variable for the port (if not already set by Cloud Run)
-ENV PORT 8080
+# ENV PORT 8080
 
 # Run the app. CMD is required to run on Heroku
 # $PORT is set by Heroku
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "$PORT"]
+# CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "$PORT"]
+CMD exec uvicorn main:app --host 0.0.0.0 --port $PORT
+
